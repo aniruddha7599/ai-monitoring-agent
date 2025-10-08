@@ -1,0 +1,5 @@
+#Virtaul Enviroment 
+ai_monitoring_env/
+
+#python cache
+__pycache__/
