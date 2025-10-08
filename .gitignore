@@ -1,5 +1,8 @@
-#Virtaul Enviroment 
+# Virtual Environment
 ai_monitoring_env/
 
-#python cache
+# Python cache
 __pycache__/
+
+# Document files
+*.docx
