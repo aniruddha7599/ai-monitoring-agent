@@ -1,12 +1,16 @@
 from fastapi import FastAPI, Depends
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
+from . import agent
 
 # MODIFIED: Import from our new files
 from . import database, models, analysis
 
 # MODIFIED: Use the Base from the models file to create the tables
 models.Base.metadata.create_all(bind=database.engine)
+
+class AgentQuery(BaseModel):
+    question: str
 
 # Pydantic Model (no changes here)
 class LogEntry(BaseModel):
@@ -48,3 +52,20 @@ def create_log_entry(log: LogEntry, db: Session = Depends(get_db)):
 def get_analysis_stats(db: Session = Depends(get_db)):
     stats = analysis.get_stats_for_last_hour(db)
     return stats
+
+
+# --- Add this new endpoint at the very end of the file ---
+@app.post("/agent/query")
+def query_agent(query: AgentQuery, db: Session = Depends(get_db)):
+    """
+    Receives a natural language question and passes it to the agent.
+    """
+    # Create a new agent executor for each request
+    agent_executor = agent.create_monitoring_agent(db)
+    
+    # Invoke the agent with the user's question
+    response = agent_executor.invoke({
+        "input": query.question
+    })
+    
+    return {"response": response}

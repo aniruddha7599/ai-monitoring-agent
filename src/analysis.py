@@ -22,8 +22,9 @@ def get_stats_for_last_hour(db: Session):
         stats = {
             "time_window_start": one_hour_ago.isoformat(),
             "total_requests": result.total_requests,
-            "total_cost": round(result.total_cost, 6) if result.total_cost else 0,
-            "avg_latency_ms": round(result.avg_latency, 2) if result.avg_latency else 0
+            "total_cost": round(float(result.total_cost), 6) if result.total_cost else 0,
+            # MODIFIED: Convert Decimal to float before rounding
+            "avg_latency_ms": round(float(result.avg_latency), 2) if result.avg_latency else 0
         }
     else:
         stats = {
