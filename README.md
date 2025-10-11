@@ -49,14 +49,15 @@ graph TD
     I[APScheduler] -- Every 30s --> G;
 ````
 
-| Component          | Technology                                                                                                                              | Purpose                                       |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| **Backend** | \<img src="https://www.google.com/search?q=https://img.shields.io/badge/FastAPI-0.110-green%3Flogo%3Dfastapi" alt="FastAPI" /\>                                                 | High-performance REST API                     |
-| **Database** | \<img src="https://www.google.com/search?q=https://img.shields.io/badge/PostgreSQL-15-blue%3Flogo%3Dpostgresql" alt="PostgreSQL" /\> & SQLAlchemy                               | Data storage and ORM                          |
-| **Containerization** | \<img src="https://www.google.com/search?q=https://img.shields.io/badge/Docker-25.0-blue%3Flogo%3Ddocker" alt="Docker" /\>                                                      | Running the PostgreSQL database               |
-| **AI Orchestration** | \<img src="https://www.google.com/search?q=https://img.shields.io/badge/LangChain-0.2-orange%3Flogo%3Dlangchain" alt="LangChain" /\>                                          | Building the agent and managing tools         |
-| **LLM** | \<img src="https://www.google.com/search?q=https://img.shields.io/badge/Ollama-0.1-lightgrey%3Flogo%3Dollama" alt="Ollama" /\> & Llama 3                                          | Local, GPU-accelerated language model         |
-| **Scheduling** | \<img src="https://www.google.com/search?q=https://img.shields.io/badge/APScheduler-3.10-purple" alt="APScheduler" /\>                                                    | Running proactive monitoring checks           |
+| Component          | Technology                                                                                              | Purpose                                       |
+| ------------------| --------------------------------------------------------------------------------------------------------| ---------------------------------------------|
+| **Backend**        | ![FastAPI](https://img.shields.io/badge/FastAPI-0.110-green?logo=fastapi)                              | High-performance REST API                     |
+| **Database**       | ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-blue?logo=postgresql) & SQLAlchemy            | Data storage and ORM                          |
+| **Containerization** | ![Docker](https://img.shields.io/badge/Docker-25.0-blue?logo=docker)                                 | Running the PostgreSQL database               |
+| **AI Orchestration** | ![LangChain](https://img.shields.io/badge/LangChain-0.2-orange?logo=langchain)                        | Building the agent and managing tools         |
+| **LLM**            | ![Ollama](https://img.shields.io/badge/Ollama-0.1-lightgrey?logo=ollama) & Llama 3                     | Local, GPU-accelerated language model         |
+| **Scheduling**     | ![APScheduler](https://img.shields.io/badge/APScheduler-3.10-purple)                                   | Running proactive monitoring checks           |
+
 
 
 ## 🚀 Setup and Installation
