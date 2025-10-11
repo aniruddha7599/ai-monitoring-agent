@@ -144,13 +144,17 @@ DATABASE_URL="postgresql://postgres:mysecretpassword@localhost:5432/postgres"
 
 ## 📸 Demo Screenshots
 
-  - **All API Endpoints are available through FastAPI's interactive docs**
+- **All API Endpoints are available through FastAPI's interactive docs**
+![API Docs](endpoints.png)
 
-  - **Log data is successfully ingested and stored in the PostgreSQL database**
+- **Log data is successfully ingested and stored in the PostgreSQL database**
+![DBeaver Data](DBeaver%20Table.png)
 
-  - **The agent receives a natural language query and provides a summarized, accurate response**
+- **The agent receives a natural language query and provides a summarized, accurate response**
+![Agent Response](API%20docs%20response.png)
 
-  - **The system proactively detects anomalies and generates an AI-powered alert**
+- **The system proactively detects anomalies and generates an AI-powered alert**
+![Proactive Alert](AI-generated%20alert.png)
 
 ## 🔮 Future Work
 
