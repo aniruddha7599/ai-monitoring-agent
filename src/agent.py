@@ -73,3 +73,24 @@ def create_monitoring_agent(db: Session):
     agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
     
     return agent_executor
+
+def generate_alert_message(reason: str):
+    """
+    Uses the LLM to generate a human-readable alert message.
+    """
+    # Initialize a new LLM instance for this task
+    llm = ChatOllama(model="llama3", temperature=0.2)
+    
+    prompt = f"""
+    You are an AI monitoring system. An anomaly has been detected in the system for the following reason:
+    
+    REASON: "{reason}"
+    
+    Write a brief, clear, and professional alert message (2-3 sentences) to be sent to the engineering team.
+    """
+    
+    # Invoke the LLM directly with the prompt
+    response = llm.invoke(prompt)
+    
+    # The response object has a 'content' attribute with the text
+    return response.content

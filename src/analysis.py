@@ -3,6 +3,11 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func
 from . import models
 
+# --- ADD THESE CONSTANTS AT THE TOP OF THE FILE ---
+COST_THRESHOLD_PER_HOUR = 1000.0  # e.g., $1000
+AVG_LATENCY_THRESHOLD_MS = 1000   # e.g., 1 second
+
+
 def get_stats_for_last_hour(db: Session):
     """
     Queries the database for logs in the last hour and calculates
@@ -61,3 +66,27 @@ def find_top_cost_users(db: Session, top_n: int = 5):
     ]
     
     return top_users
+
+
+def check_for_anomalies(stats: dict):
+    """
+    Checks the given statistics against predefined thresholds.
+    Returns a dictionary with anomaly status and reason.
+    """
+    reasons = []
+    total_cost = stats.get("total_cost", 0)
+    avg_latency = stats.get("avg_latency_ms", 0)
+
+    if total_cost > COST_THRESHOLD_PER_HOUR:
+        reasons.append(f"Total cost in the last hour (${total_cost:.2f}) exceeded the threshold of ${COST_THRESHOLD_PER_HOUR}.")
+
+    if avg_latency > AVG_LATENCY_THRESHOLD_MS:
+        reasons.append(f"Average latency in the last hour ({avg_latency}ms) exceeded the threshold of {AVG_LATENCY_THRESHOLD_MS}ms.")
+
+    if reasons:
+        return {
+            "status": "ANOMALY",
+            "reason": " and ".join(reasons)
+        }
+    else:
+        return {"status": "OK", "reason": "System is operating within normal parameters."}
