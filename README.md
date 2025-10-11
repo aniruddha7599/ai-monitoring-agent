@@ -30,6 +30,7 @@ The entire system runs locally, using the powerful Llama 3 model via Ollama for 
   - **AI-Generated Alerts:** When an anomaly is detected, the agent uses an LLM to generate a clear, professional alert message explaining the problem.
   - **Local & GPU-Accelerated:** Runs entirely on your local machine using Ollama and an NVIDIA GPU, ensuring privacy, speed, and zero cost.
 
+
 ## 🛠️ Tech Stack & Architecture
 
 The system is designed with a clean, service-oriented architecture.
@@ -46,16 +47,17 @@ graph TD
     H -- Returns Response --> F;
     F -- Sends Final Answer --> E;
     I[APScheduler] -- Every 30s --> G;
-```
+````
 
-| Component         | Technology                                                                                                  | Purpose                                       |
-| ----------------- | ----------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| **Backend** | \<img src="[https://img.shields.io/badge/FastAPI-0.110-green?logo=fastapi](https://www.google.com/search?q=https://img.shields.io/badge/FastAPI-0.110-green%3Flogo%3Dfastapi)" alt="FastAPI" /\>                       | High-performance REST API                     |
-| **Database** | \<img src="[https://img.shields.io/badge/PostgreSQL-15-blue?logo=postgresql](https://www.google.com/search?q=https://img.shields.io/badge/PostgreSQL-15-blue%3Flogo%3Dpostgresql)" alt="PostgreSQL" /\> & SQLAlchemy   | Data storage and ORM                          |
-| **Containerization**| \<img src="[https://img.shields.io/badge/Docker-25.0-blue?logo=docker](https://www.google.com/search?q=https://img.shields.io/badge/Docker-25.0-blue%3Flogo%3Ddocker)" alt="Docker" /\>                         | Running the PostgreSQL database               |
-| **AI Orchestration**| \<img src="[https://img.shields.io/badge/LangChain-0.2-orange?logo=langchain](https://www.google.com/search?q=https://img.shields.io/badge/LangChain-0.2-orange%3Flogo%3Dlangchain)" alt="LangChain" /\>               | Building the agent and managing tools         |
-| **LLM** | \<img src="[https://img.shields.io/badge/Ollama-0.1-lightgrey?logo=ollama](https://www.google.com/search?q=https://img.shields.io/badge/Ollama-0.1-lightgrey%3Flogo%3Dollama)" alt="Ollama" /\> & Llama 3             | Local, GPU-accelerated language model         |
-| **Scheduling** | \<img src="[https://img.shields.io/badge/APScheduler-3.10-purple](https://www.google.com/search?q=https://img.shields.io/badge/APScheduler-3.10-purple)" alt="APScheduler" /\>                           | Running proactive monitoring checks           |
+| Component          | Technology                                                                                                                              | Purpose                                       |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| **Backend** | \<img src="https://www.google.com/search?q=https://img.shields.io/badge/FastAPI-0.110-green%3Flogo%3Dfastapi" alt="FastAPI" /\>                                                 | High-performance REST API                     |
+| **Database** | \<img src="https://www.google.com/search?q=https://img.shields.io/badge/PostgreSQL-15-blue%3Flogo%3Dpostgresql" alt="PostgreSQL" /\> & SQLAlchemy                               | Data storage and ORM                          |
+| **Containerization** | \<img src="https://www.google.com/search?q=https://img.shields.io/badge/Docker-25.0-blue%3Flogo%3Ddocker" alt="Docker" /\>                                                      | Running the PostgreSQL database               |
+| **AI Orchestration** | \<img src="https://www.google.com/search?q=https://img.shields.io/badge/LangChain-0.2-orange%3Flogo%3Dlangchain" alt="LangChain" /\>                                          | Building the agent and managing tools         |
+| **LLM** | \<img src="https://www.google.com/search?q=https://img.shields.io/badge/Ollama-0.1-lightgrey%3Flogo%3Dollama" alt="Ollama" /\> & Llama 3                                          | Local, GPU-accelerated language model         |
+| **Scheduling** | \<img src="https://www.google.com/search?q=https://img.shields.io/badge/APScheduler-3.10-purple" alt="APScheduler" /\>                                                    | Running proactive monitoring checks           |
+
 
 ## 🚀 Setup and Installation
 
