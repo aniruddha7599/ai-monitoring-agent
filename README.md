@@ -150,11 +150,9 @@ DATABASE_URL="postgresql://postgres:mysecretpassword@localhost:5432/postgres"
 
 2.  **DBeaver showing the log data saved in the PostgreSQL table.**
 
-3.  **The terminal showing the agent's "thought process" (`verbose=True` output).**
+3.  **The final, summarized answer from the agent in the API docs response.**
 
-4.  **The final, summarized answer from the agent in the API docs response.**
-
-5.  **The AI-generated alert appearing in the terminal from the proactive scheduler.**
+4.  **The AI-generated alert appearing in the terminal from the proactive scheduler.**
 
 ## 🔮 Future Work
 
