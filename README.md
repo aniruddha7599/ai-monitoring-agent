@@ -1,6 +1,6 @@
 -----
 
-# 🤖 Intelligent Monitoring & Alerting for GenAI Systems 📈
+# 🤖 Intelligent Monitoring & Alerting for GenAI Systems
 
 A proactive AIOps agent that ingests telemetry data from GenAI applications, answers natural language questions about system health, and automatically generates alerts when anomalies are detected. This project is built to demonstrate a modern, end-to-end AI engineering workflow.
 
