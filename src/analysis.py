@@ -35,3 +35,29 @@ def get_stats_for_last_hour(db: Session):
         }
     
     return stats
+
+def find_top_cost_users(db: Session, top_n: int = 5):
+    """
+    Finds the top N users by their total incurred cost in the last hour.
+    """
+    one_hour_ago = datetime.now(timezone.utc) - timedelta(hours=1)
+    
+    # This query groups by user_id, sums the cost, orders by that sum, and limits the result.
+    results = db.query(
+        models.LLMUsageLog.user_id,
+        func.sum(models.LLMUsageLog.cost_usd).label("total_cost")
+    ).filter(
+        models.LLMUsageLog.timestamp >= one_hour_ago
+    ).group_by(
+        models.LLMUsageLog.user_id
+    ).order_by(
+        func.sum(models.LLMUsageLog.cost_usd).desc()
+    ).limit(top_n).all()
+    
+    # Format the results into a list of dictionaries for the agent
+    top_users = [
+        {"user_id": user_id, "total_cost": round(float(total_cost), 6)}
+        for user_id, total_cost in results
+    ]
+    
+    return top_users

@@ -14,9 +14,19 @@ def get_tools(db: Session):
             name="get_system_statistics",
             func=lambda _: analysis.get_stats_for_last_hour(db),
             description="""
-            Use this tool to get the most recent system statistics.
+            Use this tool to get the most recent overall system statistics.
             It provides the total number of requests, total cost, and average latency
             for all LLM calls made in the last hour.
+            """
+        ),
+        # --- ADD THE NEW TOOL HERE ---
+        Tool(
+            name="find_highest_cost_users",
+            func=lambda top_n_str: analysis.find_top_cost_users(db, int(top_n_str.strip("'\" "))),
+            description="""
+            Use this tool to find the users who have incurred the most cost.
+            The input to this tool should be a single integer representing the
+            number of top users to find. For example, '5' would find the top 5 users.
             """
         ),
     ]
