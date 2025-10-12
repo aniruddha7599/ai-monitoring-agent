@@ -61,7 +61,7 @@ def create_monitoring_agent(db: Session):
     prompt = PromptTemplate.from_template(AGENT_PROMPT_TEMPLATE)
     
     # Initialize the LLM
-    llm = ChatOllama(model="llama3", temperature=0)
+    llm = ChatOllama(model="qwen3:8b", temperature=0)
     
     # Get the tools
     tools = get_tools(db)
@@ -79,7 +79,7 @@ def generate_alert_message(reason: str):
     Uses the LLM to generate a human-readable alert message.
     """
     # Initialize a new LLM instance for this task
-    llm = ChatOllama(model="llama3", temperature=0.2)
+    llm = ChatOllama(model="qwen3:8b", temperature=0)
     
     prompt = f"""
     You are an AI monitoring system. An anomaly has been detected in the system for the following reason:
